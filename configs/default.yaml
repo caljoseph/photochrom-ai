@@ -14,6 +14,7 @@ trainer:
   devices: auto
   precision: 16
   log_every_n_steps: 50
+  val_check_interval: 0.5
 
 logger:
   project: photochrom-ai

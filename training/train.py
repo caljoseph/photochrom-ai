@@ -51,6 +51,7 @@ def main(cfg: DictConfig):
         monitor="val/loss",
         mode="min",
     )
+
     callbacks = [
         ImageLoggerCallback(every_n_steps=200),
         checkpoint_callback
@@ -63,6 +64,7 @@ def main(cfg: DictConfig):
         devices=cfg.trainer.devices,
         precision=cfg.trainer.precision,
         log_every_n_steps=cfg.trainer.log_every_n_steps,
+        val_check_interval=cfg.trainer.val_check_interval,
         logger=logger,
         callbacks=callbacks
     )
