@@ -5,7 +5,7 @@ model:
 data:
   root_dir: data/processed
   batch_size: 16
-  image_size: [256, 256]
+  image_size: [512, 512]
   num_workers: 8
 
 trainer:

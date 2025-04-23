@@ -26,13 +26,18 @@ class ImageLoggerCallback(Callback):
             pred_np = pred_ab[i].cpu()
             gt_np = ab[i].cpu()
 
+            # Create grayscale visualization
             input_bw = l_np[0].numpy() / 100.0
+
+            # Generate colorized versions
             pred_rgb = lab_to_rgb(l_np, pred_np)
             gt_rgb = lab_to_rgb(l_np, gt_np)
 
-            images.append(wandb.Image(input_bw, caption="Input L"))
-            images.append(wandb.Image(pred_rgb, caption="Predicted ab"))
-            images.append(wandb.Image(gt_rgb, caption="Ground Truth ab"))
+            # Log to wandb
+            image_id = batch['id'][i] if 'id' in batch else f"sample_{i}"
+            images.append(wandb.Image(input_bw, caption=f"Input L - {image_id}"))
+            images.append(wandb.Image(pred_rgb, caption=f"Predicted - {image_id}"))
+            images.append(wandb.Image(gt_rgb, caption=f"Ground Truth - {image_id}"))
 
         pl_module.logger.experiment.log({
             "train/visuals": images,

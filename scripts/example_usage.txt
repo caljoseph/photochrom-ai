@@ -1,4 +1,4 @@
-# Basic run for UNet
+# Basic UNet run (original model)
 bash scripts/run_slurm.sh unet
 
 # Run with overrides (Hydra-style)

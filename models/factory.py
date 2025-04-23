@@ -1,5 +1,6 @@
 from models.unet import UNet
 
+
 def get_model(model_type: str):
     if model_type == "unet":
         return UNet()
