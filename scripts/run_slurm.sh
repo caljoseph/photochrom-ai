@@ -46,6 +46,7 @@ echo -e "\033[1;34m📂 Working dir: \$(pwd)\033[0m"
 source ~/.bashrc
 mamba activate photochrom-ai
 
+export PYTHONPATH=\$PWD:\$PYTHONPATH
 cd \$HOME/photochrom-ai  # 👈 update this to your repo location
 
 echo -e "\033[1;36m🏃‍♂️ Running training for: $CONFIG_NAME\033[0m"
