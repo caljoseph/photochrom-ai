@@ -1,0 +1,15 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# PyCharm project files
+.idea/
+
+# Virtual environments
+venv/
+.env/
+
+
+data/processed/*
+data/raw/*

@@ -1,0 +1,57 @@
+
+  | Name  | Type | Params | Mode
+---------------------------------------
+0 | model | UNet | 1.9 M  | train
+---------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.528     Total estimated model params size (MB)
+29        Modules in train mode
+0         Modules in eval mode
+                                                  
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:420: Consider setting `persistent_workers=True` in 'val_dataloader' to speed up the dataloader worker initialization.
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/utilities/data.py:106: Total length of `DataLoader` across ranks is zero. Please make sure this was your intention.
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/Users/calebbradshaw/PycharmProjects/photochrom-ai/training/train.py", line 32, in main
+    trainer.fit(model, datamodule=data)
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 561, in fit
+    call._call_and_handle_interrupt(
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 48, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 599, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path)
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1012, in _run
+    results = self._run_stage()
+              ^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/trainer.py", line 1056, in _run_stage
+    self.fit_loop.run()
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/loops/fit_loop.py", line 208, in run
+    self.setup_data()
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/loops/fit_loop.py", line 237, in setup_data
+    train_dataloader = _request_dataloader(source)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py", line 326, in _request_dataloader
+    return data_source.dataloader()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py", line 293, in dataloader
+    return call._call_lightning_datamodule_hook(self.instance.trainer, self.name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/call.py", line 198, in _call_lightning_datamodule_hook
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/calebbradshaw/PycharmProjects/photochrom-ai/training/lightning_datamodule.py", line 21, in train_dataloader
+    return DataLoader(self.train_dataset, batch_size=self.batch_size,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/fabric/utilities/data.py", line 325, in wrapper
+    init(obj, *args, **kwargs)
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/torch/utils/data/dataloader.py", line 383, in __init__
+    sampler = RandomSampler(dataset, generator=generator)  # type: ignore[arg-type]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/torch/utils/data/sampler.py", line 165, in __init__
+    raise ValueError(
+ValueError: num_samples should be a positive integer value, but got num_samples=0
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

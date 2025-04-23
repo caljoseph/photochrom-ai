@@ -1,0 +1,18 @@
+
+  | Name  | Type | Params | Mode
+---------------------------------------
+0 | model | UNet | 1.9 M  | train
+---------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.528     Total estimated model params size (MB)
+29        Modules in train mode
+0         Modules in eval mode
+Epoch 0:  12%|█▏        | 660/5332 [03:23<24:01,  3.24it/s, v_num=wvru, train/loss_step=0.0364]
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:420: Consider setting `persistent_workers=True` in 'val_dataloader' to speed up the dataloader worker initialization.
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:420: Consider setting `persistent_workers=True` in 'train_dataloader' to speed up the dataloader worker initialization.
+/Users/calebbradshaw/PycharmProjects/photochrom-ai/training/utils.py:18: UserWarning: Conversion from CIE-LAB, via XYZ to sRGB color space resulted in 32 negative Z values that have been clipped to zero
+  rgb = lab2rgb(lab)                   # Returns float64 in [0,1]

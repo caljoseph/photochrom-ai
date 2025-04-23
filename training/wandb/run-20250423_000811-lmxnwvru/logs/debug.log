@@ -1,0 +1,45 @@
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_setup.py:_flush():68] Current SDK version is 0.19.10
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_setup.py:_flush():68] Configure stats pid to 41435
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_setup.py:_flush():68] Loading settings from /Users/calebbradshaw/.config/wandb/settings
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_setup.py:_flush():68] Loading settings from /Users/calebbradshaw/PycharmProjects/photochrom-ai/training/wandb/settings
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_setup.py:_flush():68] Loading settings from environment variables
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_init.py:setup_run_log_directory():724] Logging user logs to ./wandb/run-20250423_000811-lmxnwvru/logs/debug.log
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to ./wandb/run-20250423_000811-lmxnwvru/logs/debug-internal.log
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_init.py:init():852] calling init triggers
+2025-04-23 00:08:11,037 INFO    MainThread:41435 [wandb_init.py:init():857] wandb.init called with sweep_config: {}
+config: {'_wandb': {}}
+2025-04-23 00:08:11,038 INFO    MainThread:41435 [wandb_init.py:init():893] starting backend
+2025-04-23 00:08:11,038 INFO    MainThread:41435 [wandb_init.py:init():897] sending inform_init request
+2025-04-23 00:08:11,062 INFO    MainThread:41435 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2025-04-23 00:08:11,062 INFO    MainThread:41435 [wandb_init.py:init():907] backend started and connected
+2025-04-23 00:08:11,064 INFO    MainThread:41435 [wandb_init.py:init():1002] updated telemetry
+2025-04-23 00:08:11,065 INFO    MainThread:41435 [wandb_init.py:init():1026] communicating run to backend with 90.0 second timeout
+2025-04-23 00:08:11,851 INFO    MainThread:41435 [wandb_init.py:init():1101] starting run threads in backend
+2025-04-23 00:08:11,960 INFO    MainThread:41435 [wandb_run.py:_console_start():2566] atexit reg
+2025-04-23 00:08:11,960 INFO    MainThread:41435 [wandb_run.py:_redirect():2414] redirect: wrap_raw
+2025-04-23 00:08:11,960 INFO    MainThread:41435 [wandb_run.py:_redirect():2483] Wrapping output streams.
+2025-04-23 00:08:11,960 INFO    MainThread:41435 [wandb_run.py:_redirect():2506] Redirects installed.
+2025-04-23 00:08:11,961 INFO    MainThread:41435 [wandb_init.py:init():1147] run started, returning control to user process
+2025-04-23 00:08:12,054 INFO    MainThread:41435 [wandb_run.py:_config_callback():1429] config_cb None None {'lr': 0.0001}
+2025-04-23 00:12:19,094 WARNING MsgRouterThr:41435 [router.py:message_loop():63] [no run ID] message_loop has been closed
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/wandb/sdk/interface/router_sock.py", line 27, in _read_message
+    return self._sock_client.read_server_response(timeout=1)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/wandb/sdk/lib/sock_client.py", line 235, in read_server_response
+    data = self._read_packet_bytes(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/wandb/sdk/lib/sock_client.py", line 220, in _read_packet_bytes
+    raise SockClientClosedError
+wandb.sdk.lib.sock_client.SockClientClosedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/wandb/sdk/interface/router.py", line 56, in message_loop
+    msg = self._read_message()
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/wandb/sdk/interface/router_sock.py", line 29, in _read_message
+    raise MessageRouterClosedError from e
+wandb.sdk.interface.router.MessageRouterClosedError
+2025-04-23 00:12:19,108 INFO    MsgRouterThr:41435 [mailbox.py:close():129] [no run ID] Closing mailbox, abandoning 1 handles.

@@ -1,0 +1,20 @@
+Initializing dataset with root_dir: /Users/calebbradshaw/PycharmProjects/photochrom-ai/data/processed
+Root directory exists: True
+Found 11848 total jpg files
+Sample files: ['2002695058_color.jpg', '2002720606_bw.jpg', '2001700862_color.jpg', '2002717385_color.jpg', '2002708202_bw.jpg']
+Found 5924 BW images and 5924 color images
+
+  | Name  | Type | Params | Mode
+---------------------------------------
+0 | model | UNet | 1.9 M  | train
+---------------------------------------
+1.9 M     Trainable params
+0         Non-trainable params
+1.9 M     Total params
+7.528     Total estimated model params size (MB)
+29        Modules in train mode
+0         Modules in eval mode
+Sanity Checking DataLoader 0:   0%|          | 0/2 [00:00<?, ?it/s]
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:420: Consider setting `persistent_workers=True` in 'val_dataloader' to speed up the dataloader worker initialization.
+/opt/anaconda3/envs/photochromizer/lib/python3.11/site-packages/torch/amp/autocast_mode.py:266: UserWarning: User provided device_type of 'cuda', but CUDA is not available. Disabling
+  warnings.warn(
