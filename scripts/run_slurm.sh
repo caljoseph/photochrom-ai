@@ -35,9 +35,9 @@ sbatch <<EOF
 #SBATCH --time=12:00:00
 #SBATCH --ntasks=1
 #SBATCH --nodes=1
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:8
 #SBATCH --cpus-per-task=8
-#SBATCH --mem=32G
+#SBATCH --mem=100G
 #SBATCH --qos=cs
 
 echo -e "\033[1;32m📅 Job started: \$(date)\033[0m"
@@ -49,6 +49,9 @@ mamba activate photochrom-ai
 
 export PYTHONPATH=\$PWD:\$PYTHONPATH
 cd \$HOME/photochrom-ai  # 👈 your repo location
+
+echo -e "\n===== GPU UTILIZATION (every 5s) =====\n"
+nvidia-smi --query-gpu=timestamp,index,name,utilization.gpu,utilization.memory,memory.used,memory.total --format=csv -l 5 &
 
 echo -e "\033[1;36m🏃‍♂️ Running training for: $CONFIG_NAME\033[0m"
 python training/train.py model.name="$CONFIG_NAME" ${RESUME_FLAG:+$RESUME_FLAG} $EXTRA_ARGS
