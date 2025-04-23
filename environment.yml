@@ -1,0 +1,13 @@
+name: photochrom-ai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - hydra-core
+  - lightning
+  - python=3.11
+  - pytorch
+  - scikit-image
+  - torchvision
+  - wandb
+prefix: /opt/anaconda3/envs/photochrom-ai

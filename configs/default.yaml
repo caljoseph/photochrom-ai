@@ -1,19 +1,37 @@
+model:
+  name: unet
+  lr: 0.0005
+
 data:
-  root_dir: "data/processed"
-  image_size: [512, 512]
-  batch_size: 1
+  root_dir: data/processed
+  batch_size: 16
+  image_size: [256, 256]
   num_workers: 8
 
-model:
-  name: "unet"
-  lr: 1e-4
-
 trainer:
-  max_epochs: 50
-  accelerator: "gpu"
+  max_epochs: 100
+  accelerator: gpu
   devices: 1
-  precision: "16-mixed"
-  log_every_n_steps: 10
+  precision: 16
+  log_every_n_steps: 50
 
 logger:
-  project: "photochrom-ai"
+  project: photochrom-ai
+
+hydra:
+  run:
+    dir: training/outputs/${now:%Y-%m-%d}/${now:%H-%M-%S}
+  job_logging:
+    level: INFO
+    formatters:
+      simple:
+        format: '[%(asctime)s] [%(levelname)s] - %(message)s'
+    handlers:
+      file:
+        class: logging.FileHandler
+        formatter: simple
+        filename: train.log
+        mode: a
+    root:
+      level: INFO
+      handlers: [file]
