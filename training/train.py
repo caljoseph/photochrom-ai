@@ -37,7 +37,10 @@ def main(cfg: DictConfig):
     model = PhotochromModel(lr=cfg.model.lr, model_type=cfg.model.name)
 
     # Logging
-    logger = WandbLogger(project=cfg.logger.project)
+    logger = WandbLogger(
+        project=cfg.logger.project,
+        save_dir=str(project_root / "training")
+    )
 
     # Callbacks
     checkpoint_callback = ModelCheckpoint(

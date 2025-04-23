@@ -11,7 +11,7 @@ EXTRA_ARGS="$@"           # capture remaining CLI args as a string
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 JOB_NAME="photochrom_${CONFIG_NAME}_${TIMESTAMP}"
-LOG_DIR="logs"
+LOG_DIR="slurm_output"
 mkdir -p "$LOG_DIR"
 
 CHECKPOINT_PATH="checkpoints/${CONFIG_NAME}/last.ckpt"

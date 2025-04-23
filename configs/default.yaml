@@ -11,7 +11,7 @@ data:
 trainer:
   max_epochs: 100
   accelerator: gpu
-  devices: 1
+  devices: auto
   precision: 16
   log_every_n_steps: 50
 
@@ -30,7 +30,7 @@ hydra:
       file:
         class: logging.FileHandler
         formatter: simple
-        filename: train.log
+        filename: ${hydra.run.dir}/train.log
         mode: a
     root:
       level: INFO
