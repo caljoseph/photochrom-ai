@@ -1,0 +1,7 @@
+defaults:
+  - _base_
+
+accelerator: cpu
+devices: 1
+precision: 32
+num_workers: 4

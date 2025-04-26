@@ -1,0 +1,6 @@
+defaults:
+  - _base_
+
+accelerator: gpu
+devices: auto
+precision: bf16-mixed

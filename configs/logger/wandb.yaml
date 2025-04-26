@@ -1,0 +1,4 @@
+_target_: lightning.pytorch.loggers.WandbLogger
+project: photochrom-ai
+offline: false
+save_dir: training

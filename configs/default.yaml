@@ -1,23 +1,21 @@
-model:
-  name: unet
-  lr: 0.0005
+defaults:
+  - model: unet
+  - trainer: gpu
+  - logger: wandb
+  - _self_
 
 data:
   root_dir: data/processed
-  batch_size: 16
+  batch_size: 2
   image_size: [512, 512]
-  num_workers: 8
+  num_workers: 1
 
-trainer:
-  max_epochs: 100
-  accelerator: gpu
-  devices: auto
-  precision: 16
-  log_every_n_steps: 50
-  val_check_interval: 0.5
+optim:
+  lr: 5e-5
+  weight_decay: 1e-2
 
-logger:
-  project: photochrom-ai
+callback:
+  max_images: 4
 
 hydra:
   run:

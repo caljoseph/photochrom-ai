@@ -16,6 +16,7 @@ class PhotochromDataset(Dataset):
 
         assert len(self.bw_images) == len(self.color_images), "Mismatch between BW and color images."
 
+        # Basic transforms
         self.to_tensor = T.ToTensor()
         self.resize = T.Resize(image_size)
 
@@ -25,6 +26,7 @@ class PhotochromDataset(Dataset):
     def __getitem__(self, idx):
         bw_path = self.bw_images[idx]
         color_path = self.color_images[idx]
+        image_id = bw_path.stem.replace('_bw', '')
 
         # Load and resize images
         bw_image = Image.open(bw_path).convert('L')

@@ -16,4 +16,5 @@ data/raw/*
 
 checkpoints/
 logs/
-wandb/
+training/wandb/
+pretrained_models
