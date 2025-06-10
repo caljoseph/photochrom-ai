@@ -1,12 +1,16 @@
 # PhotochromAI
 
-A deep learning project for automatic colorization of black-and-white photographs, inspired by the historical photochrom process.
+A personal deep learning project that automatically colorizes black-and-white photographs in the style of historical photochroms. Built as a fun exploration of computer vision techniques and an excuse to experiment with HPC training infrastructure.
 
 ## About Photochroms
 
-Photochroms were an early color photography technique used from the 1890s-1950s where artists hand-colored black-and-white photographs using lithographic stones to create vibrant and somewhat realistic color prints. These beautiful images captured the world in color decades before color photography became widespread, preserving scenes from across Europe, America, and beyond.
+Photochroms were a fascinating color photography technique from the 1890s-1950s where skilled artisans hand-colored black-and-white photographs using lithographic stones, creating vibrant travel postcards that captured the world in color decades before color film existed. These beautiful prints documented everything from European cityscapes to American national parks.
 
-This project aims to replicate the photochrom style using deep learning, automatically transforming grayscale images into photochroms.
+I've always been fascinated by these historical images, so I built this project to see if I could teach a neural network to recreate that distinctive photochrom aesthetic automatically.
+
+## Dataset
+
+This project uses the [Library of Congress Photochrom Print Collection](https://www.loc.gov/pictures/collection/pgz/), a digitized archive of nearly 6,000 photolithographic travel prints from the 1890s-1910s. The collection includes richly colored images of Europe, the Middle East, and North America, created by the Photoglob Company in Zürich and the Detroit Publishing Company. These historical images provide an ideal training dataset for learning photochrom-style colorization.
 
 ## Results
 
@@ -18,14 +22,14 @@ This project aims to replicate the photochrom style using deep learning, automat
 </tr>
 </table>
 
-## Features
+## Technical Approach
 
-- **U-Net Architecture**: Encoder-decoder network with skip connections for detailed colorization
-- **LAB Color Space**: Uses LAB color space for more natural color reproduction
-- **PyTorch Lightning**: Scalable training pipeline with automatic checkpointing
-- **Experiment Tracking**: Integration with Weights & Biases for training visualization
-- **Flexible Configuration**: Hydra-based configuration management
-- **HPC Support**: SLURM integration for distributed training
+- **U-Net Architecture**: Encoder-decoder CNN with skip connections for preserving fine details
+- **LAB Color Space**: Works in perceptually uniform LAB space rather than RGB for better color prediction
+- **PyTorch Lightning**: Clean, scalable training code with automatic GPU/multi-GPU support
+- **Experiment Tracking**: Weights & Biases integration for monitoring training progress and visualizing results
+- **HPC-Ready**: SLURM job scripts for training on university compute clusters
+- **Configurable**: Hydra configuration system for easy hyperparameter experimentation
 
 ## Usage
 
@@ -46,9 +50,9 @@ python training/train.py trainer.ckpt_path=checkpoints/model_name/last.ckpt
 bash scripts/run_slurm.sh model_name
 ```
 
-## Architecture
+## How It Works
 
-The model takes grayscale images (L channel, 0-100 range) as input and predicts corresponding color channels (ab channels, -1 to 1 range). The final colorized image is reconstructed by combining the original L channel with predicted ab channels.
+The model takes a grayscale image (L channel in LAB color space) and predicts the corresponding color channels (a and b channels). The U-Net architecture learns to map from lightness values to color information by training on thousands of historical photochrom pairs. Results vary - it does well on landscapes and architecture but struggles with fine details like faces or intricate patterns.
 
 ## Configuration
 
